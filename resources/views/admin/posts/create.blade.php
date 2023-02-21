@@ -28,8 +28,11 @@
                     submit your film
                 </button>
             </div>
-
-
         </form>
+
+        <div>
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
+        </div>
+
     </div>
 @endsection

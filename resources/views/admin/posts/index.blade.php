@@ -10,7 +10,7 @@
                     <th scope="col">Author</th>
                     <th scope="col">date</th>
                     <th scope="col">
-                        <a class="btn btn-primary">create a new post</a>
+                        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">create a new post</a>
                     </th>
                 </tr>
             </thead>
