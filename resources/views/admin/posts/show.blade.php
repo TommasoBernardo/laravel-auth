@@ -10,6 +10,8 @@
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-success">edit</a>
+                <a class="btn btn-danger">delete</a>
             </div>
             <div class="card-footer text-muted">
                 {{ $post->date }}
