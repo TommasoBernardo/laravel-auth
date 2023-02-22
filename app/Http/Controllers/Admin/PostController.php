@@ -13,7 +13,7 @@ class PostController extends Controller
 {
 
     protected  $validationRules = [
-        'title' => ['required,  unique:posts'],
+        'title' => ['required',  'unique:posts'],
         'date' => 'required',
         'content' => 'required'
     ];

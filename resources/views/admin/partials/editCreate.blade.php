@@ -25,6 +25,7 @@
             value="{{ old('title', $post->title) }}">
     </div>
 
+
     <div class="mb-3">
         <label for="date" class="form-label">data</label>
         <input type="datetime" class="form-control" id="date" rows="15" name="date"
@@ -33,7 +34,7 @@
 
     <div class="mb-3">
         <label for="content" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="content" rows="15" name="content">{{ old('content', $post->content) }}"</textarea>
+        <textarea class="form-control" id="content" rows="15" name="content">{{ old('content', $post->content) }}</textarea>
     </div>
 
     <div class="mb-3">
