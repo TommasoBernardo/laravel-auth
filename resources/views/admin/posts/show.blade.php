@@ -10,8 +10,8 @@
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
-                <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
-                <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST" class="d-inline-block">
+                <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">delete</button>
