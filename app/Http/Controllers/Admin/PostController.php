@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -45,7 +46,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate();
+        $data = $request->validate($this->validationRules);
         $data['author'] = Auth::user()->name;
         $data['slug'] = Str::slug($data['title']);
         $newPost = new Post();
@@ -81,11 +82,17 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
+
+        $data = $request->validate([
+            'title' => ['required', Rule::unique('posts')->ignore($post->id)],
+            'date' => 'required',
+            'content' => 'required',
+        ]);
     }
 
     /**
