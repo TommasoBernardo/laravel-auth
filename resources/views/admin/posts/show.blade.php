@@ -8,7 +8,6 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $post->title }}</h5>
-                <img src="{{ $post->image }}" class="card-img" alt="{{ $post->title }}">
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
                 <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
