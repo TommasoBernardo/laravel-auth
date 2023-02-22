@@ -8,7 +8,6 @@ use App\Models\Post;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
