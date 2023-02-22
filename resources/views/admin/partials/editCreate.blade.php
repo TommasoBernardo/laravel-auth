@@ -1,3 +1,17 @@
+<div class="p-5">
+    @if ($errors->any())
+        <div class="error-wrapper">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
 <form action="{{ route($routeAddress, $post) }}" method="POST">
     @csrf
     @method($method)
@@ -13,7 +27,7 @@
 
     <div class="mb-3">
         <label for="date" class="form-label">data</label>
-        <input type="date" class="form-control" id="date" rows="15" name="date"
+        <input type="datetime" class="form-control" id="date" rows="15" name="date"
             value="{{ old('date', $post->date) }}">
     </div>
 
