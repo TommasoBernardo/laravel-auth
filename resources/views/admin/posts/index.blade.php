@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+@section('head')
+    @vite(['resources/js/delete.js'])
+@endsection
 @section('content')
     <div class="container">
         @if (session('message'))
@@ -32,7 +34,7 @@
                             <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
 
                             <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
-                                class="d-inline-block">
+                                class="d-inline-block form-deleter">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">delete</button>

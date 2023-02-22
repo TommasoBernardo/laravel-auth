@@ -12,8 +12,8 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
 
-    protected   $validationRules = [
-        'title' => ['required|unique:posts'],
+    protected  $validationRules = [
+        'title' => ['required,  unique:posts'],
         'date' => 'required',
         'content' => 'required'
     ];
@@ -91,7 +91,7 @@ class PostController extends Controller
         $data = $request->validate([
             'title' => ['required', Rule::unique('posts')->ignore($post->id)],
             'date' => 'required',
-            'content' => 'required',
+            'content' => 'required'
         ]);
         $post->update($data);
         return redirect()->route('admin.posts.show', compact('post'));
