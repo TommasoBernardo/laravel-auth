@@ -17,7 +17,7 @@
                     <th scope="col">Author</th>
                     <th scope="col">date</th>
                     <th scope="col">
-                        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">create a new post</a>
+                        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">create a new project</a>
                     </th>
                 </tr>
             </thead>
