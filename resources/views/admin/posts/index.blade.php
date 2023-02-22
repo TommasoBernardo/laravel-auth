@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+        @if (session('message'))
+            <div class="alert alert-{{ session('message-class') }}">
+                {{ session('message') }}
+            </div>
+        @endif
         <table class="table table-striped table-hover mt-5">
             <thead class="table-dark">
                 <tr>
@@ -25,8 +30,13 @@
                             <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->id) }}">Show</a>
 
                             <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-                            </form>
 
+                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                                class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

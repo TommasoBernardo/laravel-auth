@@ -11,7 +11,11 @@
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
                 <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-                <a class="btn btn-danger">delete</a>
+                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="d-inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">delete</button>
+                </form>
             </div>
             <div class="card-footer text-muted">
                 {{ $post->date }}
