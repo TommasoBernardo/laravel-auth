@@ -24,7 +24,7 @@
                         <td>
                             <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->id) }}">Show</a>
 
-                            <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
+                            <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
                             </form>
 
                         </td>
