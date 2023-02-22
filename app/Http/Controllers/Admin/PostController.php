@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    protected   $validationRules = [
+        'title' => ['required|unique:posts'],
+        'date' => 'required',
+        'content' => 'required'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.posts.create', ["post" => new Post()]);
     }
 
     /**
@@ -39,17 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate(
-            [
-                'title' => 'required|unique:posts',
-                'date' => 'required',
-                'content' => 'required'
-            ],
-
-            [
-                'tommaso' => 'tommy '
-            ]
-        );
+        $data = $request->validate();
         $data['author'] = Auth::user()->name;
         $data['slug'] = Str::slug($data['title']);
         $newPost = new Post();
@@ -73,12 +69,12 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -90,7 +86,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
