@@ -19,8 +19,8 @@ class PostSeeder extends Seeder
     {
         for ($i = 0; $i < 60; $i++) {
             $newPost = new Post();
-            $newPost->slug = Str::slug($newPost->title);
             $newPost->title = $faker->unique()->sentence(4);
+            $newPost->slug = Str::slug($newPost->title);
             $newPost->author = $faker->name();
             $newPost->content = $faker->text(600);
             $newPost->date = $faker->dateTimeThisYear();
