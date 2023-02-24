@@ -21,4 +21,9 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function isImageUrl()
+    {
+        return filter_var($this->image, FILTER_VALIDATE_URL);
+    }
 }
