@@ -94,8 +94,18 @@ class PostController extends Controller
         $data = $request->validate([
             'title' => ['required', Rule::unique('posts')->ignore($post->id)],
             'date' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'image' => 'image|required'
         ]);
+
+
+        if ($request->hasFile('image')) {
+            if (!$post->isImageUrl()) {
+                Storage::delete($post->image);
+            }
+
+            $data['image'] =  Storage::put('img/', $data['image']);
+        }
         $post->update($data);
         return redirect()->route('admin.posts.show', compact('post'));
     }
