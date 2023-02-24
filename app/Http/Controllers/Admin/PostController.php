@@ -17,7 +17,7 @@ class PostController extends Controller
         'title' => ['required',  'unique:posts'],
         'date' => 'required',
         'content' => 'required',
-        'image' => 'required|image'
+        'image' => 'required|image|size:200'
     ];
     /**
      * Display a listing of the resource.
