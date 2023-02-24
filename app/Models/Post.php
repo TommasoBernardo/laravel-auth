@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'author', 'slug', 'title', 'date', 'content'
+        'author', 'slug', 'title', 'date', 'content', 'image'
     ];
     /**
      * Get the route key for the model.
