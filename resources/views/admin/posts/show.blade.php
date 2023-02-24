@@ -8,6 +8,9 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $post->title }}</h5>
+                <div class="card-image">
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-fluid">
+                </div>
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
                 <a class="btn btn-success" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
