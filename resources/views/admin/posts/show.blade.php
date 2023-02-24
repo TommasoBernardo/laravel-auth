@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <div class="card-image">
-                    @if (str_starts_with($post->image, 'http'))
+                    @if ($post->isImageUrl())
                         <img src="{{ $post->image }}" alt="image not found" class="img-fluid">
                     @else
                         <img src="{{ asset('STORAGE/' . $post->image) }}" alt="image not found" class="img-fluid">
