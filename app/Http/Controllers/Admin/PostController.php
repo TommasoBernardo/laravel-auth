@@ -17,7 +17,7 @@ class PostController extends Controller
         'title' => ['required',  'unique:posts'],
         'date' => 'required',
         'content' => 'required',
-        'image' => 'required|image|size:200'
+        'image' => 'required|image'
     ];
     /**
      * Display a listing of the resource.
@@ -108,6 +108,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if (!$post->isImageUrl()) {
+            Storage::delete($post->image);
+        }
         $post->delete();
         return redirect()->route('admin.posts.index')->with('message', "the film $post->title has been delete correctly ")->with('message-class', 'danger');
     }
