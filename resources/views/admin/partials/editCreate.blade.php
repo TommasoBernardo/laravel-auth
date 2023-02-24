@@ -12,7 +12,7 @@
     @endif
 </div>
 
-<form action="{{ route($routeAddress, $post) }}" method="POST">
+<form action="{{ route($routeAddress, $post) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method($method)
 
@@ -35,6 +35,13 @@
     <div class="mb-3">
         <label for="content" class="form-label">Example textarea</label>
         <textarea class="form-control" id="content" rows="15" name="content">{{ old('content', $post->content) }}</textarea>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" id="image" name="image"
+            value="{{ old('image', $post->image) }}">
     </div>
 
     <div class="mb-3">
