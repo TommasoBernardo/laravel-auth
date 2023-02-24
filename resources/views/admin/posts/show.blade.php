@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <div class="card-image">
-                    <img src="{{ asset('storage/img/' . $post->image) }}" alt="" class="img-fluid">
+                    <img src="{{ asset('STORAGE/' . $post->image) }}" alt="" class="img-fluid">
                 </div>
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>

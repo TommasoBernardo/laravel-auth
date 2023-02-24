@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -15,7 +16,8 @@ class PostController extends Controller
     protected  $validationRules = [
         'title' => ['required',  'unique:posts'],
         'date' => 'required',
-        'content' => 'required'
+        'content' => 'required',
+        'image' => 'required|image'
     ];
     /**
      * Display a listing of the resource.
@@ -49,6 +51,7 @@ class PostController extends Controller
         $data = $request->validate($this->validationRules);
         $data['author'] = Auth::user()->name;
         $data['slug'] = Str::slug($data['title']);
+        $data['image'] =  Storage::put('img/', $data['image']);
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
