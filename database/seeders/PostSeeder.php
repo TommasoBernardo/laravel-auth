@@ -25,7 +25,7 @@ class PostSeeder extends Seeder
             $newPost->author = $faker->name();
             $newPost->content = $faker->text(600);
             $newPost->date = $faker->dateTimeThisYear();
-            $newPost->image = 'kobe.jpg';
+            $newPost->image = $faker->unique()->imageUrl();
             $newPost->save();
         }
     }

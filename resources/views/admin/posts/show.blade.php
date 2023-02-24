@@ -9,7 +9,12 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $post->title }}</h5>
                 <div class="card-image">
-                    <img src="{{ asset('STORAGE/' . $post->image) }}" alt="" class="img-fluid">
+                    @if (str_starts_with($post->image, 'http'))
+                        <img src="{{ $post->image }}" alt="image not found" class="img-fluid">
+                    @else
+                        <img src="{{ asset('STORAGE/' . $post->image) }}" alt="image not found" class="img-fluid">
+                    @endif
+
                 </div>
                 <p class="card-text">{{ $post->content }}</p>
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Back</a>
